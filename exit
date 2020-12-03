@@ -1,0 +1,124 @@
+[33mcommit 00a13eabf71819b556f2a94ac13793626b447306[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Jose Espedito <espedito.jeo@gmail.com>
+Date:   Thu Dec 3 01:33:38 2020 -0300
+
+    primeiro commit
+
+[1mdiff --git a/README.md b/README.md[m
+[1mindex ffa79df..b149a3d 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -1,3 +1,4 @@[m
+[32m+[m[32mDigital Inovation One / Éveris[m
+ Projeto Web utilizando a API Coin Market Cap [m
+  [Portal do desenvolvedor](https://pro.coinmarketcap.com/account) [m
+  [Documetação de autenticação](https://coinmarketcap.com/api/documentation/v1/#section/Authentication) [m
+[1mdiff --git a/index.html b/index.html[m
+[1mindex 244924a..68b0e0c 100644[m
+[1m--- a/index.html[m
+[1m+++ b/index.html[m
+[36m@@ -43,7 +43,7 @@[m
+                 data = new Date(api.data[i].first_historical_data);[m
+                 dataFormatada = data.toLocaleDateString('pt-BR', {timeZone: 'UTC'});[m
+            [m
+[31m-                   texto = texto + `[m
+[32m+[m[32m                texto = texto + `[m
+                   [m
+                     <div class="media">[m
+                         <img src="coin.jpg" class="align-self-center mr-3" alt="coin" width="100" height="60">[m
+
+[33mcommit 19064cdc137f074e2de918bf41821ac0edbdc03d[m
+Author: Jose Espedito <espedito.jeo@gmail.com>
+Date:   Thu Dec 3 01:21:18 2020 -0300
+
+    primeiro commit
+
+[1mdiff --git a/README.md b/README.md[m
+[1mnew file mode 100644[m
+[1mindex 0000000..ffa79df[m
+[1m--- /dev/null[m
+[1m+++ b/README.md[m
+[36m@@ -0,0 +1,4 @@[m
+[32m+[m[32mProjeto Web utilizando a API Coin Market Cap[m[41m [m
+[32m+[m[32m [Portal do desenvolvedor](https://pro.coinmarketcap.com/account)[m[41m [m
+[32m+[m[32m [Documetação de autenticação](https://coinmarketcap.com/api/documentation/v1/#section/Authentication)[m[41m [m
+[32m+[m[32m [Documentação API](https://coinmarketcap.com/api/documentation/v1/#)[m
+\ No newline at end of file[m
+[1mdiff --git a/coin.jpg b/coin.jpg[m
+[1mnew file mode 100644[m
+[1mindex 0000000..b6308bb[m
+Binary files /dev/null and b/coin.jpg differ
+[1mdiff --git a/index.html b/index.html[m
+[1mnew file mode 100644[m
+[1mindex 0000000..244924a[m
+[1m--- /dev/null[m
+[1m+++ b/index.html[m
+[36m@@ -0,0 +1,67 @@[m
+[32m+[m[32m<!DOCTYPE html>[m
+[32m+[m[32m<html>[m
+[32m+[m[32m    <head>[m
+[32m+[m[32m        <title>CoinMarketCap</title>[m
+[32m+[m[32m        <link rel="stylesheet" type="text/css"[m
+[32m+[m[32m        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">[m
+[32m+[m[32m        <meta charset="utf-8">[m[41m       [m
+[32m+[m[32m    </head>[m
+[32m+[m[32m    <body>[m
+[32m+[m[32m        <nav aria-label="breadcrumb">[m
+[32m+[m[32m            <ol class="breadcrumb">[m
+[32m+[m[32m              <li class="breadcrumb-item active" aria-current="page">Coin Market Cap</li>[m
+[32m+[m[32m            </ol>[m
+[32m+[m[32m          </nav>[m
+[32m+[m[41m        [m
+[32m+[m[32m          <div class="d-flex p-3 bd-highlight">[m
+[32m+[m[32m            <div id='coins'></div>[m
+[32m+[m[32m          </div>[m
+[32m+[m[41m       [m
+[32m+[m[32m        <script type="text/javascript">[m
+[32m+[m[32m            //My api key[m
+[32m+[m[32m            var apikey = {[m
+[32m+[m[32m                key: 'f42b2d04-1731-413b-8a78-dd1ec4151ee5'[m
+[32m+[m[32m            }[m
+[32m+[m
+[32m+[m[32m        //GET Fetch Requisition[m
+[32m+[m[32m        fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=' +[m
+[32m+[m[32m                apikey.key)[m
+[32m+[m[32m                .then((response) => {[m
+[32m+[m[32m                    if(!response.ok) throw new Error('Erro ao executar a requisição, status ' + response.status);[m
+[32m+[m[32m                    return response.json();[m
+[32m+[m[32m            })[m
+[32m+[m[32m            .then((api) => {[m
+[32m+[m[41m                [m
+[32m+[m[32m                var texto = "";[m
+[32m+[m[32m                // Get 10 coins and symbols[m[41m [m
+[32m+[m[32m                for(let i = 0; i < 10; i++){[m
+[32m+[m
+[32m+[m[32m                    console.log(api);[m
+[32m+[m
+[32m+[m[32m                //Show API information[m
+[32m+[m
+[32m+[m[32m                data = new Date(api.data[i].first_historical_data);[m
+[32m+[m[32m                dataFormatada = data.toLocaleDateString('pt-BR', {timeZone: 'UTC'});[m
+[32m+[m[41m           [m
+[32m+[m[32m                   texto = texto + `[m
+[32m+[m[41m                  [m
+[32m+[m[32m                    <div class="media">[m
+[32m+[m[32m                        <img src="coin.jpg" class="align-self-center mr-3" alt="coin" width="100" height="60">[m
+[32m+[m[32m                        <div class="media-body">[m
+[32m+[m[32m                        <h5 class="mt-2">${api.data[i].name} ${dataFormatada}</h5>[m
+[32m+[m[32m                        <p>${api.data[i].symbol}</p>[m
+[32m+[m[32m                        </div>[m
+[32m+[m[32m                    </div>[m
+[32m+[m[41m               [m
+[32m+[m[32m                    `;[m
+[32m+[m
+[32m+[m[32m                    document.getElementById("coins").innerHTML = texto;[m
+[32m+[m[41m                    [m
+[32m+[m[32m                }[m
+[32m+[m[32m            })[m
+[32m+[m[32m            .catch((error) => {[m
+[32m+[m[32m                console.error(error.message);[m
+[32m+[m[32m            });[m
+[32m+[m[32m        </script>[m[41m    [m
+[32m+[m[32m    </body>[m
+[32m+[m[32m</html>[m
+\ No newline at end of file[m
